@@ -1,29 +1,29 @@
 # CSV2JSON
 
-CSV2JSON, C dilinde yazılmış olan bir programdır ve CSV formatında yazılmış herhangi dosyayı 
-kolaylıkla JSON formatına dönüştürmenize olanak tanır.
+CSV2JSON is a program written in C language and can be used to create any file written in CSV format. 
+allows you to easily convert to JSON format.
 
-## Kullanım
-1- Dosyayı rardan çıkartınız.
-2- Programın çalışması için "tdm gcc" indirmiş olmanız gerekmektedir.
-3- Komut İstemi'ni çalıştırdıktan sonra cd komutuyla klasörün içindeki CSV2JSON.exe'nin olduğu dizine geliniz.
-4- Yukarıdaki talimatları uyguladıktan sonra gcc -o CSV2JSON CSV2JSON.c komutunu çalıştırınız.
-5- Ardından CSV2JSON [input.csv] [output.json] [header=ON | OFF]
-6- Böylelikle json ilgili dizinde oluşmuş oldu. 
-7- input.csv ve output.json dosyalarının isimleri sadece İngilizce karakterler içermelidir.
-8- Dosya içeriğinde Türkçe karakterlerin olması bir sorun teşkil etmemektedir.
+## Usage
+1- Extract the file from the rar.
+2- You must have downloaded "tdm gcc" for the program to run.
+3- After running Command Prompt, cd command to the directory with CSV2JSON.exe inside the folder.
+4- After following the instructions above, run gcc -o CSV2JSON CSV2JSON.c.
+5- Then CSV2JSON [input.csv] [output.json] [header=ON | OFF]
+6- This way json is created in the relevant directory. 
+7- The names of input.csv and output.json files must contain only English characters.
+8- It is not a problem to have Turkish characters in the file content.
 
-Örnek çalıştırma,
+Example run,
 C:\Users\UserName> cd Desktop\CSV2JSON 
 C:\Users\UserName\Desktop\CSV2JSON> gcc -o CSV2JSON CSV2JSON.c
 C:\Users\UserName\Desktop\CSV2JSON> CSV2JSON deneme.csv output.json header=ON
 
 
-## Katkı
-Bütün katkılar hoş karşılanmaktadır. Büyük değişiklikler için lütfen neyi değiştirmek istediğinizi belirtiniz.
+## Contribution
+All contributions are welcome. For major changes, please specify what you want to change.
 
 ## Lisans
-MIT License Copyright (c) [2022] [ÖMER KARAKEÇE]
+MIT License Copyright (c) [2022] [OMER KARAKECE]
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
 and associated documentation files (the "Software"), to deal in the Software without restriction, 
 including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
