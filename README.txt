@@ -11,7 +11,7 @@ allows you to easily convert to JSON format.
 5- Then CSV2JSON [input.csv] [output.json] [header=ON | OFF]
 6- This way json is created in the relevant directory. 
 7- The names of input.csv and output.json files must contain only English characters.
-8- It is not a problem to have Turkish characters in the file content.
+8- It is not a problem to have Turkish characters in the file content
 
 Example run,
 C:\Users\UserName> cd Desktop\CSV2JSON 
