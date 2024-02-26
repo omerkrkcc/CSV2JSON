@@ -11,21 +11,21 @@ int main(int argc, char* argv[])
     // init
     setlocale(LC_ALL, "Turkish");
     FILE* csvDosyasi; // okunacak
-    FILE* jsonDosyasi; // üstüne yazýlacak
+    FILE* jsonDosyasi; // Ã¼stÃ¼ne yazÄ±lacak
 
-    // 3 tane komut eklenmiþ mi kontrol et
+    // 3 tane komut eklenmiÅŸ mi kontrol et
     //    [1]        [2]        [3]
-    // input.csv output.json header=OFF
+    // input.csv output.json header=OFF.
     if (argc == 4)
     {
         // ----- ANA KOD -----
-        // dosyalarý aç
+        // dosyalarÄ± aÃ§
         csvDosyasi = fopen(argv[1], "rt, ccs=UTF-8");
         jsonDosyasi = fopen(argv[2], "wt, ccs=UTF-8");
         wchar_t satir[200]; // max 200 satir
 
 
-        if (csvDosyasi && jsonDosyasi) // dosya açýksa
+        if (csvDosyasi && jsonDosyasi) // dosya aÃ§Ä±ksa
         {
             fwprintf(jsonDosyasi, L"[");
             wchar_t baslikSatiri[200]; // ilk satir
@@ -44,11 +44,11 @@ int main(int argc, char* argv[])
                 baslikSayisi++;
                 tokenBaslik = wcstok(NULL, L" ,");
             }
-            // satirdaki son elemanýn en sonundaki \n karakterini \0 ile deðiþtir
+            // satirdaki son elemanÄ±n en sonundaki \n karakterini \0 ile deÄŸiÅŸtir
             basliklar[baslikSayisi - 1][wcslen(basliklar[baslikSayisi - 1]) - 1] = L'\0';
 
-            // header kapalýysa baslikSatiri olarak
-            // alýnan ilk satýrý da kolon1: "veri" þeklinde yaz
+            // header kapalÄ±ysa baslikSatiri olarak
+            // alÄ±nan ilk satÄ±rÄ± da kolon1: "veri" ÅŸeklinde yaz
             if (!strcmp(argv[3], "header=OFF"))
             {
                 fwprintf(jsonDosyasi, L"\n\t{\n\t\t");
@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
                     fwprintf(jsonDosyasi, basliklar[i]);
                     fwprintf(jsonDosyasi, L"\",\n\t\t");
                 }
-                // en sondaki veriden sonra gelen virgülü temizlemek ve daha iyi format için
+                // en sondaki veriden sonra gelen virgÃ¼lÃ¼ temizlemek ve daha iyi format iÃ§in
                 fseek(jsonDosyasi, -5, SEEK_END);
                 fwprintf(jsonDosyasi, L"");
 
@@ -77,14 +77,14 @@ int main(int argc, char* argv[])
                 
             }
 
-            // her satýrý oku
+            // her satÄ±rÄ± oku
             while (fgetws(satir, 200, csvDosyasi) != NULL)
             {
                 fwprintf(jsonDosyasi, L"\n\t{\n\t\t");
 
                 // satiri parsela
                 wchar_t* tokenSatirN = wcstok(satir, L" ,"); // n. satir tokeni
-                wchar_t satirParsed[50][50]; // parse'lanmýþ satiri depolamak için
+                wchar_t satirParsed[50][50]; // parse'lanmÄ±ÅŸ satiri depolamak iÃ§in
                 int satirIndex = 0;
                 while (tokenSatirN != NULL)
                 {
@@ -92,10 +92,10 @@ int main(int argc, char* argv[])
                     satirIndex++;
                     tokenSatirN = wcstok(NULL, L" ,");
                 }
-                // satirdaki son elemanýn en sonundaki \n karakterini \0 ile deðiþtir
+                // satirdaki son elemanÄ±n en sonundaki \n karakterini \0 ile deÄŸiÅŸtir
                 satirParsed[baslikSayisi - 1][wcslen(satirParsed[baslikSayisi - 1]) - 1] = L'\0';
 
-                // verileri kullanarak pair'leri oluþtur
+                // verileri kullanarak pair'leri oluÅŸtur
                 // I = I. satir, J = J. veri
                 // "baslik": "satirIJ"
                 for (int i = 0; i < baslikSayisi; i++)
@@ -122,14 +122,14 @@ int main(int argc, char* argv[])
                     fwprintf(jsonDosyasi, satirParsed[i]);
                     fwprintf(jsonDosyasi, L"\",\n\t\t");
                 }
-                // en sondaki veriden sonra gelen virgülü temizlemek ve daha iyi format için
+                // en sondaki veriden sonra gelen virgÃ¼lÃ¼ temizlemek ve daha iyi format iÃ§in
                 fseek(jsonDosyasi, -5, SEEK_END);
                 fwprintf(jsonDosyasi, L"");
                 //fwprintf(jsonDosyasi, satir);
 
                 fwprintf(jsonDosyasi, L"\n\t},");
             }
-            // en sondaki veriden sonra gelen virgülü temizlemek ve daha iyi format için
+            // en sondaki veriden sonra gelen virgÃ¼lÃ¼ temizlemek ve daha iyi format iÃ§in
             fseek(jsonDosyasi, -3, SEEK_END);
             fwprintf(jsonDosyasi, L"\t}");
             fwprintf(jsonDosyasi, L"\n]");
@@ -137,12 +137,12 @@ int main(int argc, char* argv[])
             fclose(csvDosyasi);
             fclose(jsonDosyasi);
             
-            printf("Program baþarýyla çalýþmýþtýr");
+            printf("Program baÅŸarÄ±yla Ã§alÄ±ÅŸmÄ±ÅŸtÄ±r");
         }
     }
     else
     {
-        printf("Program komut satýrý eksikliðinden dolayý çalýþtýrýlamamýþtýr.");
+        printf("Program komut satÄ±rÄ± eksikliÄŸinden dolayÄ± Ã§alÄ±ÅŸtÄ±rÄ±lamamÄ±ÅŸtÄ±r.");
     }
     return 0;
 }
